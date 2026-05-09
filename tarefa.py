@@ -46,7 +46,20 @@ def listar_tarefas():
         print(f"{nome_tarefa} - {status}")
 
 def remover_tarefa():
-    pass
+    titulo = input("Digite o titulo da tarefa que deseja remover: ").strip()
+    tarefas = carregar_tarefas()
+    for tarefa in tarefas:
+        if tarefa.get("titulo").strip() == titulo:
+            deseja = input(f"Deseja realmente remover a tarefa '{titulo}'? (s/n): ").strip().lower()
+            if deseja in ("s", "si", "sim")	:
+                tarefas.remove(tarefa)
+                salvar_tarefas(tarefas)
+                print(f"Tarefa '{titulo}' removida com sucesso!")
+                return
+            if deseja in ("n", "nao", "não"):
+                print("Remocao cancelada.")
+                return
+    print(f"Tarefa '{titulo}' nao encontrada.")
 
 def concluir_tarefa():
     pass
