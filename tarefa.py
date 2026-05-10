@@ -62,4 +62,17 @@ def remover_tarefa():
     print(f"Tarefa '{titulo}' nao encontrada.")
 
 def concluir_tarefa():
-    pass
+    titulo = input("Digite o titulo da tarefa que deseja marcar como concluida: ").strip()
+    tarefas = carregar_tarefas()
+    for tarefa in tarefas:
+        if tarefa.get("titulo").strip() == titulo:
+            deseja = input(f"Deseja marcar a tarefa '{titulo}' como concluida? (s/n): ").strip().lower()
+            if deseja in ("s", "si", "sim"):
+                tarefa["concluida"] = True
+                salvar_tarefas(tarefas)
+                print(f"Tarefa '{titulo}' concluida com sucesso!")
+                return
+            if deseja in ("n", "nao", "não"):
+                print("Operacao cancelada.")
+                return
+    print(f"Tarefa '{titulo}' nao encontrada.")

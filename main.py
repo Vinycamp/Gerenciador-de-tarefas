@@ -1,5 +1,7 @@
 from tarefa import *
 
+print("Bem vindo ao gerenciador simples de tarefas")
+
 while True:
     print("1. Adicionar Tarefa")
     print("2. Listar tarefas")
